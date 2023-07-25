@@ -55,6 +55,10 @@ class Settings:
             'node_modules',
         ]
 
+        # TODO: Make player a class which holds settings. Then this can be set while running.
+        self.audio_confirmation = True
+        self.audio_volume = 0.05 # TODO: Set separete for commands and reading(?)
+
         self.script_root_path = None
         self.set_script_root_path()
         

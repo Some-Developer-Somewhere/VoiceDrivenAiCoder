@@ -6,7 +6,7 @@ from settings_actions_cli import choose_settings_action
 from ElevenlabsStream import ElevenLabsTTS
 from settings import Settings
 from copy_to_clipboard import copy_transcription_to_clipboard  # import the new function
-
+from play_audio import play_audio_asynchronously
     
 def print_key_options(s):
     print("")
@@ -36,16 +36,20 @@ def choose_option():
             key_pressed = "error"
             
         if key_pressed == '1':
+            # play_audio_asynchronously('recording.mp3')
             record_and_transcribe(s)
             msvcrt.getch() # Clear any keypress #TODO: Will not handle it if user presses [Arrow-Up]
+            play_audio_asynchronously('transcribed.mp3')
             # print_key_options()
 
         elif key_pressed == '2':
             print("Chat chosen.")
+            play_audio_asynchronously('chat.mp3')
             choose_chat_action(s)
 
         elif key_pressed == '3':
             print("Copy transcription to clipboard chosen.")
+            play_audio_asynchronously('copy.mp3')
             copy_transcription_to_clipboard(s)
 
         # elif key_pressed == '4':
@@ -67,15 +71,18 @@ def choose_option():
 
         elif key_pressed == '8':
             print("Pick context file")
+            play_audio_asynchronously('pick_file.mp3')
             choose_file_option(s)
             # chosen_file = choose_file_option(s.cwd, s.default_context_fip)
             # s.context_fip = s.set_context_fip_abs(chosen_file)
         
         elif key_pressed == '9':
             print("Settings chosen.")
+            play_audio_asynchronously('settings.mp3')
             choose_settings_action(s)
         
         elif key_pressed == 'q':
+            play_audio_asynchronously('quit.mp3')
             print("Exit chosen.")
             exit()
         else:

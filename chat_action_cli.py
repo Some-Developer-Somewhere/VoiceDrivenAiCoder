@@ -4,6 +4,7 @@ from settings import Settings
 from gpt_chat_agent import ChatAgent
 from read_files_for_context import read_files
 from function_calls_manager import Function_calls
+from play_audio import play_audio_asynchronously
 
 
 def print_chat_options():
@@ -102,16 +103,19 @@ def choose_chat_action(s):
         key_pressed = msvcrt.getch().decode("utf-8")
 
         if key_pressed == '1':
+            play_audio_asynchronously('new.mp3')
             clear_history = True
             do_chat(s, chatAgent, clear_history)
             break
 
         elif key_pressed == '2':
+            play_audio_asynchronously('continue.mp3')
             clear_history = False
             do_chat(s, chatAgent, clear_history)
             break
 
         elif key_pressed == '3':
+            play_audio_asynchronously('new_with_file_as_context.mp3')
             print("Starting a new chat with selected file context.")
             chatAgent.clear_self_chat_history()
             context_files = [s.context_fip]
@@ -120,6 +124,7 @@ def choose_chat_action(s):
             break
 
         elif key_pressed == '4':
+            play_audio_asynchronously('multi-file_context.mp3')
             print("Starting a new chat with multi-file-context.")
             print(s.multi_file_context_list_fip)
             context_files = []
@@ -132,6 +137,7 @@ def choose_chat_action(s):
             break
 
         elif key_pressed == '5':
+            play_audio_asynchronously('files_in_folder_as_context.mp3')
             print("Starting a new chat with all files in folder as context.")
             # return "new_with_context_of_files_in_folder"
             # print(s.cwd)
@@ -142,17 +148,20 @@ def choose_chat_action(s):
             break
 
         elif key_pressed == '6':
+            play_audio_asynchronously('function_call_with_context.mp3')
             print("TODO: Function Call with context")
             do_chat(s, chatAgent, do_function_call=True) # TODO: Doublecheck if they are sendt correctly to function
             break
 
         elif key_pressed == '7':
+            play_audio_asynchronously('clean_function_call_without_context.mp3')
             print("TODO: Function Call from new message")
             clear_history = True
             do_chat(s, chatAgent, clear_history, do_function_call=True)
             break
 
         elif key_pressed.lower() == 'c':
+            play_audio_asynchronously('cancel.mp3')
             print("Cancel.")
             # return None
             break

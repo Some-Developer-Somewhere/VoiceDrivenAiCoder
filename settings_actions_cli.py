@@ -1,5 +1,6 @@
 import msvcrt
 from settings import Settings
+from play_audio import play_audio_asynchronously
 
 
 def print_settings_options():
@@ -30,22 +31,27 @@ def choose_settings_action(s):
         key_pressed = msvcrt.getch().decode("utf-8")
 
         if key_pressed == '1':
+            play_audio_asynchronously('stream_on.mp3')
             s.openAiSettings.stream = True
             print(s.openAiSettings.stream)
             break
         elif key_pressed == '2':
+            play_audio_asynchronously('stream_off.mp3')
             s.openAiSettings.stream = False
             print(s.openAiSettings.stream)
             break
         elif key_pressed == '3':
+            play_audio_asynchronously('GPT-3.mp3')
             s.openAiSettings.select_gpt3()
             print(s.openAiSettings.model)
             break
         elif key_pressed == '4':
+            play_audio_asynchronously('GPT-4.mp3')
             s.openAiSettings.select_gpt4()
             print(s.openAiSettings.model)
             break
         elif key_pressed == '5':
+            play_audio_asynchronously('GPT-3_16K.mp3')
             s.openAiSettings.select_gpt3_16k()
             print(s.openAiSettings.model)
             break
@@ -54,6 +60,7 @@ def choose_settings_action(s):
             print(s.openAiSettings.model)
             break
         elif key_pressed.lower() == 'c':
+            play_audio_asynchronously('cancel.mp3')
             print("Cancel.")
             break
         else:

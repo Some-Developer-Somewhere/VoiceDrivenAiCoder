@@ -42,6 +42,7 @@ def read_files(files):
 if __name__ == '__main__':
     # Example usage
     files_list = [
+        r"C:\GIT\Bitbucket\ai_exploration\CliTools\20230703_gpt_from_terminal\GptCli.py",
         # r"CliTools\20230703_gpt_from_terminal\gpt_chat_agent.py",
         "gpt_chat_agent.py",
         # "main.py",

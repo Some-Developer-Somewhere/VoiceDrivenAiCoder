@@ -64,7 +64,10 @@ class Function_calls:
         # print(functionArgs)
 
         function = self.functions_dict[functionName]
-        function_call_result = function.execute(functionArgs)
+        try:
+            function_call_result = function.execute(functionArgs)
+        except Exception as e:
+            function_call_result = str(e)
 
         return (functionName, function_call_result)
 

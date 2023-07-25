@@ -1,7 +1,7 @@
 import os
 import msvcrt
 from settings import Settings
-
+from play_audio import play_audio_asynchronously
 
 def print_file_options(files):
     print("\nChoose between the following options:")
@@ -27,6 +27,7 @@ def choose_file_option(s):
         key_pressed = msvcrt.getch().decode("utf-8")
 
         if key_pressed.lower() == 'd':
+            play_audio_asynchronously('default.mp3')
             print(f"Default file '{default_context_fip}' chosen.")
             # return default_context_fip
             s.set_context_fip_abs(default_context_fip)
@@ -35,6 +36,7 @@ def choose_file_option(s):
             break
         elif key_pressed == 'c':
             print("Cancel.")
+            play_audio_asynchronously('cancel.mp3')
             # return None
             break
         elif key_pressed.isdigit() and 1 <= int(key_pressed) <= len(files):
